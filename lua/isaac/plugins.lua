@@ -30,6 +30,17 @@ require("lazy").setup({
   'tpope/vim-fugitive',
   'Shatur/neovim-ayu',
   {
+    "NeogitOrg/neogit",
+    branch = "nightly",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true
+  },
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     config = true,
