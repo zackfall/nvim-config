@@ -21,6 +21,10 @@ require('fidget').setup({})
 
 require "isaac.servers"
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
+
 --
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -28,7 +32,12 @@ local luasnip = require 'luasnip'
 
 cmp.setup {
   view = {
-    entries = "native"
+    entries = "native",
+    auto_open = true
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered()
   },
   snippet = {
     expand = function(args)
