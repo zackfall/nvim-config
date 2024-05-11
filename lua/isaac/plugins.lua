@@ -30,6 +30,7 @@ require("lazy").setup({
   'tpope/vim-fugitive',
   'xiyaowong/transparent.nvim',
   'onsails/lspkind.nvim',
+  'nvim-lualine/lualine.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "NeogitOrg/neogit",
@@ -83,8 +84,7 @@ require("lazy").setup({
     "rcarriga/nvim-notify",
     config = function()
       require("notify").setup({
-        background_colour = "#000000",
-        enabled = false,
+        enabled = true,
       })
     end
   },
