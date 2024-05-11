@@ -41,6 +41,9 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
+-- Use LspKind
+local lspkind = require('lspkind')
+
 cmp.setup {
   view = {
     entries = "native",
@@ -87,6 +90,19 @@ cmp.setup {
     { name = 'luasnip' },
     { name = "neorg" },
   },
+  -- Configuring LspKind
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'text_symbol',
+      maxwidth = 50,
+      ellipsis_char = '...',
+      show_labelDetails = true,
+
+      before = function(entry, vim_item)
+        return vim_item
+      end
+    })
+  }
 }
 
 vim.api.nvim_create_autocmd('FileType', {

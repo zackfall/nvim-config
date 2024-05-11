@@ -29,6 +29,7 @@ require("lazy").setup({
   'lewis6991/gitsigns.nvim',
   'tpope/vim-fugitive',
   'xiyaowong/transparent.nvim',
+  'onsails/lspkind.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "NeogitOrg/neogit",
