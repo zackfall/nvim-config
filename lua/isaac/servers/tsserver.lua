@@ -4,7 +4,9 @@ table.insert(runtime_path, 'package.json')
 table.insert(runtime_path, 'src/index.ts')
 table.insert(runtime_path, '?.ts')
 
-require("lspconfig").tsserver.setup{
+require("lspconfig").tsserver.setup {
+  on_attach = OnAttach,
+  capabilities = Capabilities,
   init_options = {
     preferences = {
       quotePreference = 'single'

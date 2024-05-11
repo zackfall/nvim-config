@@ -5,11 +5,18 @@ vim.keymap.set('n', 'gl', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- Setup mason so it can manage external tooling
-require('mason').setup()
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed = "✓",
+      package_pending = "➜",
+      package_uninstalled = "✗"
+    }
+  }
+})
 
 -- Enable the following language servers
--- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls', 'html' }
+local servers = { 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls', 'cssls', 'tailwindcss' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -30,8 +37,6 @@ require "isaac.servers"
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
 
-
---
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
@@ -93,7 +98,7 @@ vim.api.nvim_create_autocmd('FileType', {
     })
   end,
 })
-
+--
 require('lint').linters_by_ft = {
   markdown = { 'vale' },
   html = { 'vale' },

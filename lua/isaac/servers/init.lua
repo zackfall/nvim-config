@@ -50,13 +50,15 @@ OnAttach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 
   require "lsp_signature".on_attach({
-      bind = true, -- This is mandatory, otherwise border config won't get registered.
-      handler_opts = {
-        border = "rounded"
-      }
-    }, bufnr)
+    bind = true,   -- This is mandatory, otherwise border config won't get registered.
+    handler_opts = {
+      border = "rounded"
+    }
+  }, bufnr)
 end
 
 require "isaac.servers.lua_ls"
 require "isaac.servers.tsserver"
 require "isaac.servers.pyright"
+require "isaac.servers.cssls"
+require "isaac.servers.html"
