@@ -42,8 +42,8 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = { 'branch', 'diff', 'diagnostics' },
-    lualine_b = { 'mode' },
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
     lualine_c = { custom_fname },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
