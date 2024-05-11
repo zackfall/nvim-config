@@ -22,6 +22,38 @@ function custom_fname:update_status()
   return data
 end
 
+-- Using gitsigns instead of lualine default diff
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed
+    }
+  end
+end
+
+local virtual_env = function()
+  if vim.bo.filetype ~= 'python' then
+    return ""
+  end
+
+  local conda_env = os.getenv('CONDA_DEFAULT_ENV')
+  local venv_path = os.getenv('VIRTUAL_ENV')
+
+  if venv_path == nil then
+    if conda_env == nil then
+      return ""
+    else
+      return string.format("  %s (conda)", conda_env)
+    end
+  else
+    local venv_name = vim.fn.fnamemodify(venv_path, ':t')
+    return string.format("  %s (venv)", venv_name)
+  end
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -32,19 +64,27 @@ require('lualine').setup {
       statusline = {},
       winbar = {},
     },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch', 'diff', 'diagnostics' },
-    lualine_c = { custom_fname },
+    lualine_b = {
+      {
+        'FugitiveHead',
+        icon = ''
+      },
+      {
+        'diff',
+        source = diff_source
+      },
+      'diagnostics',
+    },
+    lualine_c = {
+      custom_fname,
+      {
+        virtual_env,
+        color = { fg = '#74c7ec' }
+      }
+    },
     lualine_x = { 'encoding', 'fileformat', 'filetype' },
     lualine_y = { 'progress' },
     lualine_z = { 'location' }
@@ -60,5 +100,5 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {}
+  extensions = { "fugitive" }
 }

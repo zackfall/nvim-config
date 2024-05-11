@@ -31,6 +31,7 @@ require("lazy").setup({
   'xiyaowong/transparent.nvim',
   'onsails/lspkind.nvim',
   'nvim-lualine/lualine.nvim',
+  'nanotee/sqls.nvim',
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "NeogitOrg/neogit",

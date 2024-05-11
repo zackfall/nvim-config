@@ -16,7 +16,7 @@ require('mason').setup({
 })
 
 -- Enable the following language servers
-local servers = { 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls', 'cssls', 'tailwindcss' }
+local servers = { 'rust_analyzer', 'pyright', 'tsserver', 'gopls', 'lua_ls', 'cssls', 'tailwindcss', 'sqls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
