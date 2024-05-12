@@ -1,11 +1,11 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
     lazypath,
   })
 end
@@ -28,74 +28,81 @@ require("lazy").setup({
   'norcalli/nvim-colorizer.lua',
   'lewis6991/gitsigns.nvim',
   'tpope/vim-fugitive',
+  'tpope/vim-surround',
   'xiyaowong/transparent.nvim',
   'onsails/lspkind.nvim',
   'nvim-lualine/lualine.nvim',
   'nanotee/sqls.nvim',
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  'mfussenegger/nvim-lint',
   {
-    "NeogitOrg/neogit",
+    'nmac427/guess-indent.nvim',
+    config = function()
+      require('guess-indent').setup {}
+    end
+  },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
+  {
+    'NeogitOrg/neogit',
     branch = "nightly",
     dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional - Diff integration
+      'nvim-lua/plenary.nvim',         -- required
+      'sindrets/diffview.nvim',        -- optional - Diff integration
 
-      "nvim-telescope/telescope.nvim", -- optional
+      'nvim-telescope/telescope.nvim', -- optional
     },
     config = true
   },
   {
     'windwp/nvim-autopairs',
-    event = "InsertEnter",
+    event = 'InsertEnter',
     config = true,
     opts = {}
   },
-  'mfussenegger/nvim-lint',
   {
     'mrcjkb/rustaceanvim',
     version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
-  { "catppuccin/nvim", as = "catppuccin" },
+  { 'catppuccin/nvim', as = 'catppuccin' },
   {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
   },
   {
-    "L3MON4D3/LuaSnip",
+    'L3MON4D3/LuaSnip',
     -- follow latest release.
-    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    version = 'v2.*', -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
-    build = "make install_jsregexp"
+    build = 'make install_jsregexp'
   },
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
   },
   {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.6",
-    dependencies = { "nvim-lua/plenary.nvim" }
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.6',
+    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
-    "rcarriga/nvim-notify",
+    'rcarriga/nvim-notify',
     config = function()
-      require("notify").setup({
+      require('notify').setup({
         enabled = true,
       })
     end
   },
   {
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     build = function()
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
+      pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
+      'nvim-treesitter/nvim-treesitter-textobjects',
     }
   },
   {
