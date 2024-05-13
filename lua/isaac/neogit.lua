@@ -2,6 +2,15 @@
 -- like fetching branches with telescope or blaming with fugitive
 local neogit = require('neogit')
 
+neogit.setup {
+  commit_editor = {
+    kind = "vsplit"
+  },
+  commit_select_view = {
+    kind = "vsplit"
+  },
+}
+
 vim.keymap.set("n", "<leader>gs", neogit.open,
   { silent = true, noremap = true }
 )
