@@ -45,10 +45,8 @@ require("lazy").setup({
     'NeogitOrg/neogit',
     branch = "nightly",
     dependencies = {
-      'nvim-lua/plenary.nvim',         -- required
-      'sindrets/diffview.nvim',        -- optional - Diff integration
-
-      'nvim-telescope/telescope.nvim', -- optional
+      'nvim-lua/plenary.nvim',  -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
     },
     config = true
   },
@@ -86,7 +84,13 @@ require("lazy").setup({
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'jonarrien/telescope-cmdline.nvim'
+    },
+    keys = {
+      { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
+    }
   },
   {
     'rcarriga/nvim-notify',
