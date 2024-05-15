@@ -34,6 +34,7 @@ require("lazy").setup({
   'nvim-lualine/lualine.nvim',
   'nanotee/sqls.nvim',
   'mfussenegger/nvim-lint',
+  'Exafunction/codeium.vim',
   {
     'nmac427/guess-indent.nvim',
     config = function()
