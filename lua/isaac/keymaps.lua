@@ -54,3 +54,17 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+keymap("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
+keymap("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+keymap("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
+keymap("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
+keymap("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+keymap("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+
+-- lazy
+keymap("n", "<leader>l", ":Lazy<cr>", opts)
+
+-- new file
+keymap("n", "<leader>fn", ":enew<cr>", opts)
