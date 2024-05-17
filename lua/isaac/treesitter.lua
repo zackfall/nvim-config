@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup {
   ensure_installed = {
     "go", "lua", "python", "rust", "regex", "typescript", "javascript",
