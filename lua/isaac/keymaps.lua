@@ -68,3 +68,9 @@ keymap("n", "<leader>l", ":Lazy<cr>", opts)
 
 -- new file
 keymap("n", "<leader>fn", ":enew<cr>", opts)
+
+-- paste without losing your previous copy
+keymap("x", "<leader>p", "\"_dP", opts)
+
+-- replace the word under the cursor
+keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
