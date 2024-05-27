@@ -85,6 +85,7 @@ local mappings = {
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["/"] = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = true })<cr>", "Fuzzily search in current buffer" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "Toggles diagnostics" },
+  ["e"] = { "<cmd>Neotree toggle<cr>", "Toggle file explorer" },
   s = {
     name = "Telescope",
     ["f"] = { "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Search files" },

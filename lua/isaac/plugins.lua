@@ -121,4 +121,16 @@ require("lazy").setup({
     'folke/trouble.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      '3rd/image.nvim'
+    },
+  },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
+  }
 })

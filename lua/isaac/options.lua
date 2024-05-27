@@ -38,6 +38,9 @@ local options = {
 }
 
 local opt = vim.opt
+local buf = vim.api.nvim_get_current_buf()
+
+vim.api.nvim_buf_set_option(buf, 'modifiable', true)
 
 for k, v in pairs(options) do
   opt[k] = v
@@ -105,3 +108,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+vim.fn.sign_define("DiagnosticSignError",
+  { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn",
+  { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo",
+  { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint",
+  { text = "󰌵", texthl = "DiagnosticSignHint" })
