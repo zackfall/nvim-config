@@ -24,7 +24,6 @@ require("lazy").setup({
   'RRethy/vim-illuminate',
   'j-hui/fidget.nvim',
   'stevearc/conform.nvim',
-  'windwp/nvim-ts-autotag',
   'norcalli/nvim-colorizer.lua',
   'lewis6991/gitsigns.nvim',
   'tpope/vim-fugitive',
@@ -35,6 +34,7 @@ require("lazy").setup({
   'nanotee/sqls.nvim',
   'mfussenegger/nvim-lint',
   'Exafunction/codeium.vim',
+  'windwp/nvim-ts-autotag',
   {
     'nmac427/guess-indent.nvim',
     config = function()
@@ -44,7 +44,7 @@ require("lazy").setup({
   { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
     'NeogitOrg/neogit',
-    branch = "nightly",
+    branch = "master",
     dependencies = {
       'nvim-lua/plenary.nvim',  -- required
       'sindrets/diffview.nvim', -- optional - Diff integration
@@ -132,5 +132,11 @@ require("lazy").setup({
   {
     'stevearc/dressing.nvim',
     opts = {},
+  },
+  {
+    'epwalsh/obsidian.nvim',
+    version = "*",
+    lazy = true,
+    ft = "markdown"
   }
 })
