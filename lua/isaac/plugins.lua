@@ -63,11 +63,6 @@ require("lazy").setup({
     version = '^4', -- Recommended
     lazy = false,   -- This plugin is already lazy
   },
-  { 'catppuccin/nvim', as = 'catppuccin' },
-  {
-    'ray-x/lsp_signature.nvim',
-    event = 'VeryLazy',
-  },
   {
     'L3MON4D3/LuaSnip',
     -- follow latest release.
@@ -88,11 +83,7 @@ require("lazy").setup({
     tag = '0.1.6',
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'jonarrien/telescope-cmdline.nvim'
     },
-    keys = {
-      { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' }
-    }
   },
   {
     'rcarriga/nvim-notify',
@@ -139,5 +130,9 @@ require("lazy").setup({
     version = "*",
     lazy = true,
     ft = "markdown"
-  }
+  },
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+  },
 })
