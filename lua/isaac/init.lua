@@ -1,6 +1,7 @@
 require "isaac.plugins"
 require "isaac.alpha"
 require "isaac.autotag"
+require "isaac.bufferline"
 require "isaac.colorscheme"
 require "isaac.comfort"
 require "isaac.gitsigns"
@@ -14,4 +15,3 @@ require "isaac.telescope"
 require "isaac.treesitter"
 require "isaac.trouble"
 require "isaac.which_key"
-

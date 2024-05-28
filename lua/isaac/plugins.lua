@@ -35,6 +35,7 @@ require("lazy").setup({
   'mfussenegger/nvim-lint',
   'Exafunction/codeium.vim',
   'windwp/nvim-ts-autotag',
+  'akinsho/bufferline.nvim',
   {
     'nmac427/guess-indent.nvim',
     config = function()
