@@ -85,6 +85,7 @@ local mappings = {
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["/"] = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown { winblend = 10, previewer = true })<cr>", "Fuzzily search in current buffer" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "Toggles diagnostics" },
+  ["X"] = { "<cmd>TodoTrouble<cr>", "Toggles Todos" },
   ["e"] = { "<cmd>Neotree toggle<cr>", "Toggle file explorer" },
   s = {
     name = "Telescope",
@@ -92,6 +93,7 @@ local mappings = {
     ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Search projects" },
     ["b"] = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Search buffers" },
     ["h"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Search Help" },
+    ["t"] = { "<cmd>TodoTelescope<cr>", "Search Todos" },
   },
   r = {
     name = "Rust",

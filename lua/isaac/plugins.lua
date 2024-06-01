@@ -36,6 +36,7 @@ require("lazy").setup({
   'Exafunction/codeium.vim',
   'windwp/nvim-ts-autotag',
   'akinsho/bufferline.nvim',
+  'folke/todo-comments.nvim',
   {
     'nmac427/guess-indent.nvim',
     config = function()
@@ -138,7 +139,6 @@ require("lazy").setup({
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
