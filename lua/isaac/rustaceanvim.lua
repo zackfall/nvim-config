@@ -1,3 +1,4 @@
+-- TODO: Improve this
 vim.g.rustaceanvim = {
   rust_analyzer = {
     check = {
