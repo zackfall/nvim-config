@@ -95,6 +95,16 @@ local mappings = {
     ["h"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Search Help" },
     ["t"] = { "<cmd>TodoTelescope<cr>", "Search Todos" },
   },
+  l = {
+    name = "LSP",
+    ["r"] = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    ["a"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+    ["f"] = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Float Diagnostics" },
+    ["j"] = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+    ["k"] = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
+    ["l"] = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    ["q"] = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
+  },
   r = {
     name = "Rust",
     a = { "<cmd>RustLsp codeAction<cr>", "Run Code Actions" },
