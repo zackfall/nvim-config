@@ -37,13 +37,13 @@ require("lazy").setup({
   'windwp/nvim-ts-autotag',
   'akinsho/bufferline.nvim',
   'folke/todo-comments.nvim',
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
     'nmac427/guess-indent.nvim',
     config = function()
       require('guess-indent').setup {}
     end
   },
-  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
   {
     'NeogitOrg/neogit',
     branch = "master",
@@ -148,5 +148,6 @@ require("lazy").setup({
       { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
-  }
+  },
+  { 'wakatime/vim-wakatime', lazy = false }
 })
