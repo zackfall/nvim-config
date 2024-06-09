@@ -8,7 +8,8 @@ require("conform").setup({
     typescript = { { "prettierd", "prettier" } },
     html = { "prettier" },
     css = { "prettier" },
-    rust = { "rustfmt" }
+    rust = { "rustfmt" },
+    toml = { "taplo" }
   },
   format_on_save = {
     timeout_ms = 500,
