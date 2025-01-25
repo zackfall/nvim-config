@@ -19,3 +19,5 @@ n_keymap('<leader>fh', telescope.help_tags, 'Telescope help tags')
 --
 local neogit = require('neogit')
 n_keymap('<leader>ng', neogit.open, 'Open Neogit')
+n_keymap('<leader>nl', "<CMD>Neogit log<CR>", 'Open Logs')
+n_keymap('<leader>nb', "<CMD>Neogit branch<CR>", "Open branch")
