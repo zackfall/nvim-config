@@ -2,6 +2,13 @@ function n_keymap(keymap, command, desc)
   vim.keymap.set("n", keymap, command, { desc = desc })
 end
 
+function i_keymap(keymap, command, desc)
+  vim.keymap.set("i", keymap, command, { desc = desc })
+end
+
+n_keymap('<S-l>', '<cmd>Lazy<cr>', 'Open Lazy')
+n_keymap('<leader>so', '<cmd>so %<cr>', 'Reload the config')
+
 -- Oil Keybinding
 --
 n_keymap("-", "<CMD>Oil<CR>", "Open parent directory")
@@ -21,3 +28,12 @@ local neogit = require('neogit')
 n_keymap('<leader>ng', neogit.open, 'Open Neogit')
 n_keymap('<leader>nl', "<CMD>Neogit log<CR>", 'Open Logs')
 n_keymap('<leader>nb', "<CMD>Neogit branch<CR>", "Open branch")
+
+-- Utility Keybinding
+--
+n_keymap('<leader>q', '<cmd>q<cr>', 'Quit neovim')
+n_keymap('<leader>w', '<cmd>w<cr>', 'Save current buffer')
+
+-- Insert Keybinding
+--
+i_keymap('jj', '<Esc>', 'Exit Insert mode')
