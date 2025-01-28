@@ -33,6 +33,17 @@ n_keymap('<leader>nb', "<CMD>Neogit branch<CR>", "Open branch")
 --
 n_keymap('<leader>q', '<cmd>q<cr>', 'Quit neovim')
 n_keymap('<leader>w', '<cmd>w<cr>', 'Save current buffer')
+local ufo = require('ufo')
+n_keymap('zR', ufo.openAllFolds, 'Open All folds')
+n_keymap('zM', ufo.closeAllFolds, 'Closes All folds')
+n_keymap('zr', ufo.openFoldsExceptKinds, 'Open All folds except kinds')
+n_keymap('zm', ufo.closeFoldsWith, 'Closes All folds')
+n_keymap('K', function ()
+  local winid = ufo.peekFoldedLinesUnderCursor()
+  if not winid then
+    vim.lsp.buf.hover()
+  end
+end)
 
 -- Insert Keybinding
 --

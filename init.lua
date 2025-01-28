@@ -1,5 +1,3 @@
-require("config.options")
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -26,4 +24,5 @@ require("lazy").setup("plugins", {
   },
   -- checker = { enabled = true },
 })
+require("config.options")
 require("config.keymaps")

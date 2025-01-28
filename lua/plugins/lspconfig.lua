@@ -6,6 +6,10 @@ return {
     local mason_lspconfig = require('mason-lspconfig')
 
     local capabilities = require('blink.cmp').get_lsp_capabilities()
+    capabilities.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true
+    }
     -- local on_attach = function(client)
     --   require('completion').on_attach(client)
     -- end
@@ -61,6 +65,8 @@ return {
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end
     })
+
+    require('ufo').setup()
 
     local keymap = vim.keymap
 
