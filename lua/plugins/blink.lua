@@ -49,8 +49,13 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
+      default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
       providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
         emoji = {
           module = 'blink-emoji',
           name = 'Emoji',
