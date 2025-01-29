@@ -60,12 +60,12 @@ return {
       }
     })
 
-    lspconfig['rust_anylizer'].setup({
+    lspconfig['rust_analyzer'].setup({
       on_attach = function(_, bufnr)
         vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       end,
       settings = {
-        ["rust_anylizer"] = {
+        ["rust-analyzer"] = {
           imports = {
             granularity = {
               group = "module",
