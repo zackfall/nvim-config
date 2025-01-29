@@ -25,7 +25,6 @@ n_keymap('<leader>ff',
     telescope.find_files(require('telescope.themes').get_ivy({
       sort_mru = true,
       sort_lastused = false,
-      initial_mode = 'normal',
       layout_config = {
         preview_width = 0.45
       }
