@@ -9,6 +9,8 @@ return {
     scope = { enabled = true },
     dim = { enabled = true },
     indent = { enabled = true },
+    notifier = { enabled = true },
+    notify = { enabled = true },
     dashboard = {
       preset = {
         header = [[
