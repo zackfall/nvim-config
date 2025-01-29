@@ -12,6 +12,8 @@ return {
     notifier = { enabled = true },
     notify = { enabled = true },
     scratch = { enabled = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
     dashboard = {
       preset = {
         header = [[
@@ -112,7 +114,15 @@ return {
     },
     -- TODO: Configure Picker
     picker = {
-      enabled = true
+      enabled = true,
+      matcher = {
+        sort_empty = true,
+        frecency = true
+      },
+      layout = {
+        preview = 'main',
+        preset = 'ivy'
+      },
     },
   },
 }
