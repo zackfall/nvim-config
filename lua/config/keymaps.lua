@@ -51,6 +51,14 @@ n_keymap(
 --
 -- }}}
 
+-- Snacks Keybinding: {{{
+--
+n_keymap('<leader>sbd', function () Snacks.bufdelete("%") end, 'Delete the current buffer')
+n_keymap('<leader>sbl', '<cmd>lua Snacks.git.blame_line()<cr>', 'Show git log for the current line')
+n_keymap('<leader>snh', '<cmd>lua Snacks.notifier.show_history()<cr>', 'Shows notifications history')
+--
+-- }}}
+
 -- Neogit Keybinding: {{{
 --
 local neogit = require('neogit')
@@ -94,10 +102,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down in visual 
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up in visual mode" })
 
 vim.keymap.set("n", "J", "mzJ`z")
+n_keymap('<leader>h', ':nohlsearch<CR>', 'Stop searching')
 --
 -- }}}
-
-n_keymap('<leader>bdd', function () Snacks.bufdelete("%") end, 'Delete the current buffer')
 
 -- Insert Keybinding: {{{
 --
