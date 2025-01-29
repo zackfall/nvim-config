@@ -11,6 +11,7 @@ return {
     indent = { enabled = true },
     notifier = { enabled = true },
     notify = { enabled = true },
+    scratch = { enabled = true },
     dashboard = {
       preset = {
         header = [[
@@ -108,6 +109,10 @@ return {
         i_down = { "<down>", { "hist_down" }, mode = { "i", "n" } },
         q = "cancel",
       },
-    }
+    },
+    -- TODO: Configure Picker
+    picker = {
+      enabled = true
+    },
   },
 }

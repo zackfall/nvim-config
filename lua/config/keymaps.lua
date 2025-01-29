@@ -1,8 +1,8 @@
-function n_keymap(keymap, command, desc)
-  vim.keymap.set("n", keymap, command, { desc = desc })
+local function n_keymap(keymap, command, desc)
+  vim.keymap.set("n", keymap, command, { desc = desc, silent = true })
 end
 
-function i_keymap(keymap, command, desc)
+local function i_keymap(keymap, command, desc)
   vim.keymap.set("i", keymap, command, { desc = desc })
 end
 
@@ -48,14 +48,19 @@ n_keymap(
   end,
   'Open a view of all buffers'
 )
+n_keymap('<leader>ft', '<cmd>TodoTelescope<cr>', 'Fetch Todos')
 --
 -- }}}
 
 -- Snacks Keybinding: {{{
 --
-n_keymap('<leader>sbd', function () Snacks.bufdelete("%") end, 'Delete the current buffer')
+n_keymap('<leader>sbd', function() Snacks.bufdelete("%") end, 'Delete the current buffer')
 n_keymap('<leader>sbl', '<cmd>lua Snacks.git.blame_line()<cr>', 'Show git log for the current line')
 n_keymap('<leader>snh', '<cmd>lua Snacks.notifier.show_history()<cr>', 'Shows notifications history')
+n_keymap('szz', function() Snacks.zen.zen() end, 'Open a zen float windows')
+n_keymap('szf', function() Snacks.zen.zoom() end, 'Open a zen zoom windows')
+n_keymap('<leader>.', function() Snacks.scratch() end, 'Toggle Scratch buffer')
+n_keymap('<leader>S', function() Snacks.scratch.select() end, 'Select Scratch buffer')
 --
 -- }}}
 
