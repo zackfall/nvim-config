@@ -14,6 +14,7 @@ return {
     scratch = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
+    terminal = { enabled = true },
     dashboard = {
       preset = {
         header = [[

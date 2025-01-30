@@ -61,6 +61,7 @@ n_keymap('szz', function() Snacks.zen.zen() end, 'Open a zen float windows')
 n_keymap('szf', function() Snacks.zen.zoom() end, 'Open a zen zoom windows')
 n_keymap('<leader>.', function() Snacks.scratch() end, 'Toggle Scratch buffer')
 n_keymap('<leader>S', function() Snacks.scratch.select() end, 'Select Scratch buffer')
+n_keymap('<leader>st', function() Snacks.terminal.toggle() end, 'Toggle terminal')
 --
 -- }}}
 
