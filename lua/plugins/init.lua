@@ -15,5 +15,4 @@ return {
     -- this is equivalent to setup({}) function
   },
   { 'lewis6991/gitsigns.nvim', opts = {} },
-  { 'mfussenegger/nvim-dap' }
 }

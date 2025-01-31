@@ -2,6 +2,7 @@ return {
   "williamboman/mason.nvim",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
+    'jay-babu/mason-nvim-dap.nvim'
   },
   config = function()
     local mason = require('mason')
@@ -28,6 +29,10 @@ return {
         'prismals',
         'pyright'
       }
+    })
+
+    require('mason-nvim-dap').setup({
+      ensure_installed = { 'codelldb' }
     })
   end
 }
