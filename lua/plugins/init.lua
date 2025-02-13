@@ -1,5 +1,12 @@
 return {
   {
+    'vhyrro/luarocks.nvim',
+    priority = 1001,
+    opts = {
+      rocks= { 'magick' }
+    }
+  },
+  {
     'OXY2DEV/helpview.nvim',
     lazy = false, -- Recommended
 

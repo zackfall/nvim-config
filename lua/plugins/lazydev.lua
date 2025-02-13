@@ -7,7 +7,8 @@ return {
       "snacks.nvim",
       "blink.cmp",
       "rustaceanvim",
-      "nvim-dap-ui"
+      "nvim-dap-ui",
+      "neotest"
     },
     enabled = function(root_dir)
       return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled

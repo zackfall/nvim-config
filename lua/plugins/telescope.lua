@@ -1,9 +1,10 @@
 return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
-  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' },
-  opts = function ()
-    return {
+  dependencies = { 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons', 'nvim-lua/popup.nvim', 'nvim-telescope/telescope-media-files.nvim' },
+  config = function ()
+    local telescope = require('telescope')
+    telescope.setup({
       defaults = {
         require('telescope').setup({
           pickers = {
@@ -24,6 +25,7 @@ return {
           }
         }
       }
-    }
-  end
+    })
+    telescope.load_extension('media_files')
+  end,
 }
