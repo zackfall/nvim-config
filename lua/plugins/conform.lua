@@ -25,7 +25,7 @@ return {
 			gdscript = { "gdformat" },
 			go = { "gofumpt", "goimports" },
 			java = { "google-java-format" },
-			sql = { "aqlfluff" },
+			sql = { "sqlfluff" },
 			toml = { "taplo" },
 			plaintex = { "tex-fmt" },
 		},
