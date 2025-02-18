@@ -16,6 +16,7 @@ n_keymap("-", "<CMD>Oil<CR>", "Open parent directory")
 --
 -- }}}
 
+-- TODO: Change for snacks Picker
 -- Telescope Keybinding: {{{
 --
 local telescope = require("telescope.builtin")
@@ -30,7 +31,6 @@ n_keymap("<leader>ff", function()
 	}))
 end, "Telescope find files")
 n_keymap("<leader>fg", telescope.live_grep, "Telescope live grep")
-n_keymap("<leader>fb", telescope.buffers, "Telescope buffers")
 n_keymap("<leader>fh", telescope.help_tags, "Telescope help tags")
 n_keymap("<S-h>", function()
 	require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
