@@ -23,4 +23,5 @@ return {
 	},
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "github/copilot.vim" },
+	{ "xiyaowong/transparent.nvim" },
 }
