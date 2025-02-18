@@ -121,10 +121,10 @@ vim.keymap.set("n", "J", "mzJ`z")
 n_keymap("<leader>h", ":nohlsearch<CR>", "Stop searching")
 
 -- Start godot server
-n_keymap("<leader>sg", function()
+n_keymap("<leader>gs", function()
 	vim.fn.serverstart("127.0.0.1:6004")
 end, "Start Godot server")
-n_keymap("<leader>stg", function()
+n_keymap("<leader>gt", function()
 	vim.fn.serverstop("127.0.0.1:6004")
 end, "Stop Godot server")
 --
