@@ -64,3 +64,5 @@ vim.api.nvim_create_autocmd("LspProgress", {
 		})
 	end,
 })
+
+vim.cmd.colorscheme("catppuccin-mocha")

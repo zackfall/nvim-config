@@ -1,65 +1,85 @@
-#!bin/bash
+#!/bin/bash
 
-# Filename: ~/github/dotfiles-latest/colorscheme/list/linkarzu-colors.sh
-# ~/github/dotfiles-latest/colorscheme/list/linkarzu-colors.sh
-
-# These files have to be executable
+# Filename: ~/github/dotfiles-latest/colorscheme/list/catppuccin-mocha.sh
+# ~/github/dotfiles-latest/colorscheme/list/catppuccin-mocha.sh
 
 # Lighter markdown headings
 # 4 colors to the right for these ligher headings
 # https://www.color-hex.com/color/987afb
 #
-# Given that color A (#987afb) becomes color B (#5b4996) when darkened 4 steps to the right, apply the same darkening ratio/pattern to calculate what color C (#37f499) becomes when darkened 4 steps to the right.
+# Given that color A (#987afb) becomes color B (#5b4996) when darkened 4 steps
+# to the right, apply the same darkening ratio/pattern to calculate what color
+# C (#37f499) becomes when darkened 4 steps to the right.
 #
 # Markdown heading 1 - color04
-noir_color18="#855913"
+linkarzu_color18="#796394"
 # Markdown heading 2 - color02
-noir_color19="#947e11"
+linkarzu_color19="#526c96"
 # Markdown heading 3 - color03
-noir_color20="#968f6f"
+linkarzu_color20="#648861"
 # Markdown heading 4 - color01
-noir_color21="#956a39"
+linkarzu_color21="#8d6067"
 # Markdown heading 5 - color05
-noir_color22="#8b9494"
+linkarzu_color22="#6c7298"
 # Markdown heading 6 - color08
-noir_color23="#4c1205"
+linkarzu_color23="#966b51"
 # Markdown heading foreground
 # usually set to color10 which is the terminal background
-noir_color26=#4a3f08
+linkarzu_color26="#1e1e2e"
 
-noir_color04="#e19720"
-noir_color02="#fad61d"
-noir_color03="#fdf2bb"
-noir_color01="#fbe260"
-noir_color05="#ebfafa"
-noir_color08="#811e09"
-noir_color06="#f62d14"
-# Markdown codeblock, 2 to the right of background
-# https://www.colorhexa.com
-noir_color07="#6d5d0c"
+# Mauve
+linkarzu_color04="#cba6f7"
+# Blue
+linkarzu_color02="#89b4fa"
+# Green
+linkarzu_color03="#a6e3a1"
+# Maroon
+linkarzu_color01="#eba0ac"
+# Lavender
+linkarzu_color05="#b4befe"
+# Peach
+linkarzu_color08="#fab387"
+# Sapphire
+linkarzu_color06="#74c7ec"
+# Surface 0
+# Markdown codeblock
+linkarzu_color07="#313244"
+# Subtext0
 # Comments
-noir_color09="#a5afc2"
+linkarzu_color09="#a6adc8"
+# Base
 # Terminal and neovim background
-noir_color10="#4a3f08"
+linkarzu_color10="#1e1e2e"
+# Red
 # Underline spellbad
-noir_color11="#f62d14"
+linkarzu_color11="#f38ba8"
+# Yellow
 # Underline spellcap
-noir_color12="#fad61d"
-# line across cursor, 5 to the right of background
-# https://www.colorhexa.com
-noir_color13="#a38a12"
+linkarzu_color12="#f9e2af"
+# Surface2
+# line across cursor
+linkarzu_color13="#585b70"
+# Text
 # Cursor and tmux windows text
-noir_color14="#ebfafa"
-# Tmux inactive windows, 7 colors to the right of background
-# https://www.colorhexa.com
-noir_color15="#4b4838"
+linkarzu_color14="#cdd6f4"
+# Surface1
+# Tmux inactive windows
+linkarzu_color15="#314430"
+# Flamingo
 # Selected text
-noir_color16="#e9b3fd"
-# Lualine across, 1 color to the right of background
-# https://www.colorhexa.com/0d1116
-noir_color17="#3b3206"
+linkarzu_color16="#f2cdcd"
+# Lualine across
+linkarzu_color17="#313244"
 # Cursor color
-noir_color24="#F712FF"
-# Background of inactive, 3 to the right of background
-# https://www.colorhexa.come tmux pane
-noir_color25="#7f6c0e"
+linkarzu_color24="#F712FF"
+# https://www.colorhexa.com/1e1e2e
+# #0f0f16
+# #161622
+# #1e1e2e
+# #26263a
+# #2d2d46
+# #353552
+# #3d3d5d
+# #454569
+# Background of inactive tmux pane
+linkarzu_color25="#232e3b"
