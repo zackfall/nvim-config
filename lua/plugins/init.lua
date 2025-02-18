@@ -25,4 +25,5 @@ return {
 	{ "github/copilot.vim" },
 	{ "xiyaowong/transparent.nvim" },
 	{ "wakatime/vim-wakatime" },
+	{ "brenoprata10/nvim-highlight-colors", opts = {} },
 }
