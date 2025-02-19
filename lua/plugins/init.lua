@@ -26,4 +26,11 @@ return {
 	{ "xiyaowong/transparent.nvim" },
 	{ "wakatime/vim-wakatime" },
 	{ "brenoprata10/nvim-highlight-colors", opts = {} },
+	{
+		"saecki/crates.nvim",
+		tag = "stable",
+		config = function()
+			require("crates").setup()
+		end,
+	},
 }
