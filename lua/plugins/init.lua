@@ -31,4 +31,8 @@ return {
 			require("crates").setup({})
 		end,
 	},
+	{
+		"niuiic/code-shot.nvim",
+		dependencies = "niuiic/omega.nvim",
+	},
 }

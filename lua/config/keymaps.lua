@@ -6,6 +6,10 @@ local function i_keymap(keymap, command, desc)
 	vim.keymap.set("i", keymap, command, { desc = desc })
 end
 
+local function v_keymap(keymap, command, desc)
+	vim.keymap.set("v", keymap, command, { desc = desc })
+end
+
 n_keymap("<S-l>", "<cmd>Lazy<cr>", "Open Lazy")
 n_keymap("<leader>so", "<cmd>so %<cr>", "Reload the config")
 
@@ -156,4 +160,20 @@ vim.keymap.set("n", "<leader>pd", function()
 	require("persistence").stop()
 end, { desc = "Stop Persistence", silent = true })
 -- }}}
+-- }}}
+
+-- Code Shot Keybinding: {{{
+local cs = require("config.utils")
+n_keymap("<leader>cs", function()
+	cs.shot_file_to_clipboard()
+end, "Shot the current file to clipboard")
+n_keymap("<leader>cS", function()
+	cs.shot_file_to_file()
+end, "Shot the current file to an image")
+v_keymap("<leader>cs", function()
+	cs.shot_selection_to_clipboard()
+end, "Shot the selected code to clipboard")
+v_keymap("<leader>cS", function()
+	cs.shot_selection_to_file()
+end, "Shot the selected code to a file")
 -- }}}
