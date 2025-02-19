@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 		"moyiz/blink-emoji.nvim",
+		{ "saghen/blink.compat", lazy = true, verson = false },
 	},
 	version = "*",
 	---@module 'blink.cmp'
@@ -88,7 +89,17 @@ return {
 		},
 
 		sources = {
-			default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
+			default = {
+				"lazydev",
+				"lsp",
+				"path",
+				"snippets",
+				"buffer",
+				"emoji",
+				"obsidian",
+				"obsidian_new",
+				"obsidian_tags",
+			},
 			providers = {
 				lazydev = {
 					name = "LazyDev",
@@ -101,6 +112,9 @@ return {
 					score_offset = 15,
 					opts = { insert = true },
 				},
+				obsidian = { name = "obsidian", module = "blink.compat.source", score_offset = 10 },
+				obsidian_new = { name = "obsidian_new", module = "blink.compat.source", score_offset = 10 },
+				obsidian_tags = { name = "obsidian_tags", module = "blink.compat.source", score_offset = 10 },
 			},
 		},
 	},

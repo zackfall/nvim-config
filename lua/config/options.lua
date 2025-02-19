@@ -13,6 +13,7 @@ o.foldenable = true
 o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 o.clipboard = "unnamedplus"
 o.relativenumber = true
+o.conceallevel = 1
 
 api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
 	pattern = "*",
