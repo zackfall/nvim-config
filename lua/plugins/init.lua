@@ -1,4 +1,9 @@
 return {
+	{ "lewis6991/gitsigns.nvim", opts = {} },
+	{ "github/copilot.vim" },
+	{ "xiyaowong/transparent.nvim" },
+	{ "wakatime/vim-wakatime" },
+	{ "brenoprata10/nvim-highlight-colors", opts = {} },
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1001,
@@ -18,19 +23,12 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
-		-- use opts = {} for passing setup options
-		-- this is equivalent to setup({}) function
 	},
-	{ "lewis6991/gitsigns.nvim", opts = {} },
-	{ "github/copilot.vim" },
-	{ "xiyaowong/transparent.nvim" },
-	{ "wakatime/vim-wakatime" },
-	{ "brenoprata10/nvim-highlight-colors", opts = {} },
 	{
 		"saecki/crates.nvim",
 		tag = "stable",
 		config = function()
-			require("crates").setup()
+			require("crates").setup({})
 		end,
 	},
 }
