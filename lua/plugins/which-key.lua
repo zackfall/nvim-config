@@ -10,6 +10,7 @@ return {
 			{ "<leader>s", group = "Snacks" },
 			{ "<leader>g", group = "Godot" },
 			{ "<leader>t", group = "Neotest" },
+			{ "<leader>p", group = "Persistence" },
 		},
 	},
 	keys = {

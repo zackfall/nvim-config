@@ -134,3 +134,26 @@ end, "Stop Godot server")
 --
 i_keymap("jj", "<Esc>", "Exit Insert mode")
 --- }}}
+
+-- Persistence Keybinding: {{{
+-- load the session for the current directory
+vim.keymap.set("n", "<leader>ps", function()
+	require("persistence").load()
+end, { desc = "Load the session for the current directory", silent = true })
+
+-- select a session to load
+vim.keymap.set("n", "<leader>pS", function()
+	require("persistence").select()
+end, { desc = "Select a session to load", silent = true })
+
+-- load the last session
+vim.keymap.set("n", "<leader>pl", function()
+	require("persistence").load({ last = true })
+end, { desc = "Load the last session", silent = true })
+
+-- stop Persistence => session won't be saved on exit
+vim.keymap.set("n", "<leader>pd", function()
+	require("persistence").stop()
+end, { desc = "Stop Persistence", silent = true })
+-- }}}
+-- }}}
