@@ -3,13 +3,13 @@ return {
     header = [[
 ███████╗ █████╗  ██████╗ ██████╗ ██████╗ ███████╗
 ╚══███╔╝██╔══██╗██╔════╝██╔═══██╗██╔══██╗██╔════╝
-  ███╔╝ ███████║██║     ██║   ██║██║  ██║█████╗  
- ███╔╝  ██╔══██║██║     ██║   ██║██║  ██║██╔══╝  
+  ███╔╝ ███████║██║     ██║   ██║██║  ██║█████╗
+ ███╔╝  ██╔══██║██║     ██║   ██║██║  ██║██╔══╝
 ███████╗██║  ██║╚██████╗╚██████╔╝██████╔╝███████╗
 ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝]],
   },
   sections = {
-    {section = "header"},
+    { section = "header" },
     {
       pane = 2,
       section = "terminal",
@@ -25,7 +25,7 @@ return {
       pane = 2,
       icon = " ",
       title = "Git Status",
-      section= "terminal",
+      section = "terminal",
       enabled = function()
         return Snacks.git.get_root() ~= nil
       end,
@@ -35,6 +35,6 @@ return {
       tt1 = 5 * 60,
       indent = 3,
     },
-    {section = "startup"}
+    { section = "startup" }
   }
 }
