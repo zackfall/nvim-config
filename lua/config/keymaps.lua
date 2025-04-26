@@ -15,3 +15,7 @@ map({ "n", "s" }, "<Esc>", function()
   vim.cmd("noh")
   LazyVim.cmp.actions.snippet_stop()
 end, { expr = true, desc = "Clear hlsearch" })
+
+map("n", "<C-a>", function()
+  vim.cmd("ggVG")
+end, { expr = true, desc = "Select all" })
