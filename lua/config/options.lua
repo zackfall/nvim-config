@@ -15,4 +15,3 @@ opt.wrap = false
 opt.backspace = "indent,eol,start"
 opt.path:append({ "**" })
 opt.wildignore:append({ "*/node_modules/*" })
-opt.mouse = ""
