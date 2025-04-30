@@ -60,4 +60,7 @@ return {
       end, { desc = "Open Neogit branches" })
     end,
   },
+  {
+    "brianhuster/live-preview.nvim",
+  },
 }
