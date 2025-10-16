@@ -23,30 +23,30 @@ n_keymap("-", "<CMD>Oil<CR>", "Open parent directory")
 -- TODO: Change for snacks Picker
 -- Telescope Keybinding: {{{
 --
-local telescope = require("telescope.builtin")
+-- local telescope = require("telescope.builtin")
 
-n_keymap("<leader>ff", function()
-	telescope.find_files(require("telescope.themes").get_ivy({
-		sort_mru = true,
-		sort_lastused = false,
-		layout_config = {
-			preview_width = 0.45,
-		},
-	}))
-end, "Telescope find files")
-n_keymap("<leader>fg", telescope.live_grep, "Telescope live grep")
-n_keymap("<leader>fh", telescope.help_tags, "Telescope help tags")
-n_keymap("<S-h>", function()
-	require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
-		sort_mru = true,
-		sort_lastused = false,
-		initial_mode = "normal",
-		layout_config = {
-			preview_width = 0.45,
-		},
-	}))
-end, "Open a view of all buffers")
-n_keymap("<leader>ft", "<cmd>TodoTelescope<cr>", "Fetch Todos")
+-- n_keymap("<leader>ff", function()
+-- 	telescope.find_files(require("telescope.themes").get_ivy({
+-- 		sort_mru = true,
+-- 		sort_lastused = false,
+-- 		layout_config = {
+-- 			preview_width = 0.45,
+-- 		},
+-- 	}))
+-- end, "Telescope find files")
+-- n_keymap("<leader>fg", telescope.live_grep, "Telescope live grep")
+-- n_keymap("<leader>fh", telescope.help_tags, "Telescope help tags")
+-- n_keymap("<S-h>", function()
+-- 	require("telescope.builtin").buffers(require("telescope.themes").get_ivy({
+-- 		sort_mru = true,
+-- 		sort_lastused = false,
+-- 		initial_mode = "normal",
+-- 		layout_config = {
+-- 			preview_width = 0.45,
+-- 		},
+-- 	}))
+-- end, "Open a view of all buffers")
+-- n_keymap("<leader>ft", "<cmd>TodoTelescope<cr>", "Fetch Todos")
 --
 -- }}}
 
@@ -89,10 +89,10 @@ n_keymap("<leader>nb", "<CMD>Neogit branch<CR>", "Open branch")
 n_keymap("<leader>q", "<cmd>q<cr>", "Quit neovim")
 n_keymap("<leader>w", "<cmd>w<cr>", "Save current buffer")
 local ufo = require("ufo")
-n_keymap("zR", ufo.openAllFolds, "Open All folds")
-n_keymap("zM", ufo.closeAllFolds, "Closes All folds")
-n_keymap("zr", ufo.openFoldsExceptKinds, "Open All folds except kinds")
-n_keymap("zm", ufo.closeFoldsWith, "Closes All folds")
+n_keymap("<leader>zR", ufo.openAllFolds, "Open All folds")
+n_keymap("<leader>zM", ufo.closeAllFolds, "Closes All folds")
+n_keymap("<leader>zr", ufo.openFoldsExceptKinds, "Open All folds except kinds")
+n_keymap("<leader>zm", ufo.closeFoldsWith, "Closes All folds")
 n_keymap("ñ", function()
 	ufo.peekFoldedLinesUnderCursor()
 end)
@@ -141,39 +141,39 @@ i_keymap("jj", "<Esc>", "Exit Insert mode")
 
 -- Persistence Keybinding: {{{
 -- load the session for the current directory
-vim.keymap.set("n", "<leader>ps", function()
-	require("persistence").load()
-end, { desc = "Load the session for the current directory", silent = true })
+-- vim.keymap.set("n", "<leader>ps", function()
+-- 	require("persistence").load()
+-- end, { desc = "Load the session for the current directory", silent = true })
 
--- select a session to load
-vim.keymap.set("n", "<leader>pS", function()
-	require("persistence").select()
-end, { desc = "Select a session to load", silent = true })
+-- -- select a session to load
+-- vim.keymap.set("n", "<leader>pS", function()
+-- 	require("persistence").select()
+-- end, { desc = "Select a session to load", silent = true })
 
--- load the last session
-vim.keymap.set("n", "<leader>pl", function()
-	require("persistence").load({ last = true })
-end, { desc = "Load the last session", silent = true })
+-- -- load the last session
+-- vim.keymap.set("n", "<leader>pl", function()
+-- 	require("persistence").load({ last = true })
+-- end, { desc = "Load the last session", silent = true })
 
--- stop Persistence => session won't be saved on exit
-vim.keymap.set("n", "<leader>pd", function()
-	require("persistence").stop()
-end, { desc = "Stop Persistence", silent = true })
+-- -- stop Persistence => session won't be saved on exit
+-- vim.keymap.set("n", "<leader>pd", function()
+-- 	require("persistence").stop()
+-- end, { desc = "Stop Persistence", silent = true })
 -- }}}
 -- }}}
 
 -- Code Shot Keybinding: {{{
 local cs = require("config.utils")
-n_keymap("<leader>cs", function()
+n_keymap("<leader>cC", function()
 	cs.shot_file_to_clipboard()
 end, "Shot the current file to clipboard")
-n_keymap("<leader>cS", function()
+n_keymap("<leader>cF", function()
 	cs.shot_file_to_file()
 end, "Shot the current file to an image")
-v_keymap("<leader>cs", function()
+v_keymap("<leader>cc", function()
 	cs.shot_selection_to_clipboard()
 end, "Shot the selected code to clipboard")
-v_keymap("<leader>cS", function()
+v_keymap("<leader>cf", function()
 	cs.shot_selection_to_file()
 end, "Shot the selected code to a file")
 -- }}}

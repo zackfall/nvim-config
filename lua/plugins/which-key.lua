@@ -11,6 +11,8 @@ return {
 			{ "<leader>g", group = "Godot" },
 			{ "<leader>t", group = "Neotest" },
 			{ "<leader>p", group = "Persistence" },
+			{ "<leader>z", group = "Folding" },
+			{ "<leader>c", group = "Code Shot" },
 		},
 	},
 	keys = {
