@@ -46,6 +46,15 @@ end, "Toggle explorer")
 --
 -- }}}
 
+-- Neogit Keybinding: {{{
+--
+local neogit = require("neogit")
+n_keymap("<leader>ng", neogit.open, "Open Neogit")
+n_keymap("<leader>nl", "<CMD>Neogit log<CR>", "Open Logs")
+n_keymap("<leader>nb", "<CMD>Neogit branch<CR>", "Open branch")
+--
+-- }}}
+
 vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to the beginning line" })
 vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "Go to the end of the line" })
 
