@@ -1,0 +1,104 @@
+local function n_keymap(keymap, command, desc)
+	vim.keymap.set("n", keymap, command, { desc = desc })
+end
+
+local function i_keymap(keymap, command, desc)
+	vim.keymap.set("i", keymap, command, { desc = desc })
+end
+
+local function v_keymap(keymap, command, desc)
+	vim.keymap.set("v", keymap, command, { desc = desc })
+end
+
+n_keymap("<S-l>", "<cmd>Lazy<cr>", "Open Lazy")
+n_keymap("<leader>so", "<cmd>so %<cr>", "Reload the config")
+
+-- Snacks Keybinding: {{{
+--
+n_keymap("<leader>sbd", function()
+	Snacks.bufdelete("%")
+end, "Delete the current buffer")
+n_keymap("<leader>sbl", "<cmd>lua Snacks.git.blame_line()<cr>", "Show git log for the current line")
+n_keymap("<leader>snh", "<cmd>lua Snacks.notifier.show_history()<cr>", "Shows notifications history")
+
+n_keymap("szz", function()
+	Snacks.zen.zen()
+end, "Open a zen float windows")
+n_keymap("szf", function()
+	Snacks.zen.zoom()
+end, "Open a zen zoom windows")
+
+n_keymap("<leader>.", function()
+	Snacks.scratch()
+end, "Toggle Scratch buffer")
+
+n_keymap("<leader>S", function()
+	Snacks.scratch.select()
+end, "Select Scratch buffer")
+
+n_keymap("<leader>st", function()
+	Snacks.terminal.toggle()
+end, "Toggle terminal")
+
+n_keymap("<leader>e", function()
+  Snacks.picker.explorer()
+end, "Toggle explorer")
+--
+-- }}}
+
+vim.keymap.set({ "n", "v" }, "gh", "^", { desc = "Go to the beginning line" })
+vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "Go to the end of the line" })
+
+-- Utility Keybinding: {{{
+--
+n_keymap("<leader>q", "<cmd>q<cr>", "Quit neovim")
+n_keymap("<leader>w", "<cmd>w<cr>", "Save current buffer")
+
+local ufo = require("ufo")
+n_keymap("<leader>zR", ufo.openAllFolds, "Open All folds")
+n_keymap("<leader>zM", ufo.closeAllFolds, "Closes All folds")
+n_keymap("<leader>zr", ufo.openFoldsExceptKinds, "Open All folds except kinds")
+n_keymap("<leader>zm", ufo.closeFoldsWith, "Closes All folds")
+n_keymap("ñ", function()
+	ufo.peekFoldedLinesUnderCursor()
+end)
+
+-- Function to navigate windows inside neovim
+local function navigate_window(direction)
+	return function()
+		if vim.fn.mode() == "1" then
+			vim.api.nvim_feedkeys(
+				vim.api.nvim_replace_termcodes("<Esc><C-w>" .. direction, true, false, true),
+				"n",
+				true
+			)
+		else
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>" .. direction, true, false, true), "n", true)
+		end
+	end
+end
+vim.keymap.set({ "n", "i" }, "<C-h>", navigate_window("h"), { desc = "Go to Left windows", remap = false })
+vim.keymap.set({ "n", "i" }, "<C-j>", navigate_window("j"), { desc = "Go to Lower windows", remap = false })
+vim.keymap.set({ "n", "i" }, "<C-k>", navigate_window("k"), { desc = "Go to Upper windows", remap = false })
+vim.keymap.set({ "n", "i" }, "<C-l>", navigate_window("l"), { desc = "Go to Right windows", remap = false })
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down in visual mode" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up in visual mode" })
+
+vim.keymap.set("n", "J", "mzJ`z")
+n_keymap("<leader>h", ":nohlsearch<CR>", "Stop searching")
+
+-- Start godot server
+n_keymap("<leader>gs", function()
+	vim.fn.serverstart("127.0.0.1:6004")
+end, "Start Godot server")
+n_keymap("<leader>gt", function()
+	vim.fn.serverstop("127.0.0.1:6004")
+end, "Stop Godot server")
+--
+-- }}}
+
+-- Insert Keybinding: {{{
+--
+i_keymap("jj", "<Esc>", "Exit Insert mode")
+--- }}}
