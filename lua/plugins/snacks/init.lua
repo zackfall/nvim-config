@@ -21,6 +21,7 @@ return {
     statuscolumn = { enabled = true },
     terminal = { enabled = true },
     image = { enabled = true },
+    win = { enabled = true },
     bigfile = {
       enabled = true,
       notify = true,

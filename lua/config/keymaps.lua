@@ -60,6 +60,8 @@ vim.keymap.set({ "n", "v" }, "gl", "$", { desc = "Go to the end of the line" })
 
 -- Utility Keybinding: {{{
 --
+n_keymap("<leader>pv", function() require('swenv.api').pick_venv() end, "Elegir el entorno de python")
+
 n_keymap("<leader>q", "<cmd>q<cr>", "Quit neovim")
 n_keymap("<leader>w", "<cmd>w<cr>", "Save current buffer")
 

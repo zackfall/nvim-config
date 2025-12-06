@@ -30,4 +30,15 @@ return {
     dependencies = "niuiic/omega.nvim",
   },
   { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons', opts = {} },
+  {
+    'AckslD/swenv.nvim',
+    config = function()
+      require("swenv").setup({
+        get_venvs = function(venvs_path)
+          return require('swenv.api').get_venvs(venvs_path)
+        end,
+        venvs_path = vim.fn.expand("/home/rion/.pyenv/versions/")
+      })
+    end
+  }
 }
