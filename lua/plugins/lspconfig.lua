@@ -25,11 +25,45 @@ return {
     })
     vim.lsp.enable("lua_ls")
 
+    -- Detectar automáticamente el Python del proyecto
+    local function get_python_path()
+      local cwd = vim.fn.getcwd()
+
+      -- Prioridad: .venv
+      if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+        return cwd .. "/.venv/bin/python"
+      end
+
+      -- Detectar pyenv local
+      local handle = io.popen("pyenv which python 2>/dev/null")
+      if handle then
+        local result = handle:read("*a")
+        handle:close()
+        if result and result ~= "" then
+          return result:gsub("%s+$", "")
+        end
+      end
+
+      -- Fallback
+      return "/usr/bin/python3"
+    end
+
     vim.lsp.config("pylsp", {
       capabilities = capabilities,
+      cmd = { get_python_path(), "-m", "pylsp" },
       settings = {
         pylsp = {
           plugins = {
+            ruff = { enabled = true },
+            pylsp_mypy = {
+              enabled = true,
+              live_mode = true, -- análisis en tiempo real
+              dmypy = false,    -- puedes activar si quieres daemon más rápido
+              strict = true,    -- ponlo en true si quieres modo estricto
+              overrides = {
+                "--python-executable", get_python_path(),
+              },
+            },
             pycodestyle = {
               ignore = { "W319" },
               maxLineLength = 100,
