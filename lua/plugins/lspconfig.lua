@@ -10,9 +10,6 @@ return {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
-    -- local on_attach = function(client)
-    --   require('completion').on_attach(client)
-    -- end
 
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
