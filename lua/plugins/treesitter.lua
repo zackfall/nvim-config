@@ -10,7 +10,7 @@ return {
         "markdown", "markdown_inline", "python", "typescript", "bash",
       },
       sync_install = false,
-      auto_install = true,
+      auto_install = false,
       highlight = { enable = true },
       indent = { enable = true },
       ignore_install = {},
