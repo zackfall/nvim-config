@@ -2,18 +2,24 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lspconfig = require("lspconfig")
-    local mason_lspconfig = require("mason-lspconfig")
+    -- IMPORTANTE: Ya no necesitamos llamar a lspconfig directamente para el setup
+    -- pero lo requerimos para que cargue las configs por defecto
+    require("lspconfig")
+    require("mason-lspconfig")
+    local ufo = require("ufo")
 
+    -- Capacidades para autocompletado (blink.cmp) y folding (ufo)
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     capabilities.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
-    -- local on_attach = function(client)
-    --   require('completion').on_attach(client)
-    -- end
 
+    -------------------------------------------------------------------------
+    -- 2. Configuración de Servidores (NUEVA API vim.lsp.config)
+    -------------------------------------------------------------------------
+
+    -- LUA
     vim.lsp.config("lua_ls", {
       capabilities = capabilities,
       settings = {
@@ -21,18 +27,27 @@ return {
           diagnostics = { globals = { "vim" } },
           completion = { callSnippet = "Replace" },
         },
-      }
+      },
     })
     vim.lsp.enable("lua_ls")
 
+    -- PYTHON (PYLSP) - Aquí estaba el conflicto
     vim.lsp.config("pylsp", {
       capabilities = capabilities,
       settings = {
         pylsp = {
           plugins = {
-            pycodestyle = {
-              ignore = { "W319" },
-              maxLineLength = 100,
+            -- Desactivamos lo que se solapa con Ruff
+            pycodestyle = { enabled = false },
+            mccabe = { enabled = false },
+            pyflakes = { enabled = false },
+
+            -- Linter rápido
+            ruff = { enabled = true },
+
+            -- MYPY con la inyección del path
+            pylsp_mypy = {
+              enabled = false
             },
           },
         },
@@ -40,16 +55,63 @@ return {
     })
     vim.lsp.enable("pylsp")
 
+    -- GRAPHQL
     vim.lsp.config("graphql", {
       capabilities = capabilities,
       filetypes = { "graphql", "gql", "typescriptreact", "javascriptreact" },
     })
     vim.lsp.enable("graphql")
 
-    require("ufo").setup()
+    vim.lsp.config("ts_ls", {
+      capabilities = capabilities,
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      settings = {
+        typescript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+        javascript = {
+          inlayHints = {
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayEnumMemberValueHints = true,
+          },
+        },
+      }
+    })
+    vim.lsp.enable("ts_ls")
 
-    local keymap = vim.keymap
+    -- (Opcional pero recomendado) Soporte para Tailwind CSS, casi un estándar en Next.js
+    vim.lsp.config("tailwindcss", {
+      capabilities = capabilities,
+      filetypes = { "html", "css", "javascriptreact", "typescriptreact", "mdx" },
+    })
+    vim.lsp.enable("tailwindcss")
 
+    -- (Opcional pero recomendado) Soporte para ESLint
+    vim.lsp.config("eslint", {
+      capabilities = capabilities,
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+    })
+    vim.lsp.enable("eslint")
+
+    -------------------------------------------------------------------------
+    -- 3. Configuración General (UI, Keymaps, UFO)
+    -------------------------------------------------------------------------
+    ufo.setup()
+
+    -- Signos de diagnóstico bonitos
     vim.diagnostic.config({
       signs = {
         text = {
@@ -58,74 +120,55 @@ return {
           [vim.diagnostic.severity.HINT] = "󰌶",
           [vim.diagnostic.severity.INFO] = "",
         },
-        linehl = {},
-        numhl = {
-          [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-          [vim.diagnostic.severity.WARN] = "WarningMsg",
-          [vim.diagnostic.severity.HINT] = "HintMsg",
-          [vim.diagnostic.severity.INFO] = "InfoMsg",
-        },
       },
     })
 
-    -- Keymaps CMD
-    --
+    -- Autocomandos y Keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
+        local keymap = vim.keymap
 
-        -- set keybinds
+        -- Keybinds
         opts.desc = "Show LSP references"
-        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
         opts.desc = "Go to declaration"
-        keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+        keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 
         opts.desc = "Show LSP definitions"
-        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
         opts.desc = "Show LSP implementations"
-        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+        keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
 
         opts.desc = "Show LSP type definitions"
-        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+        keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
         opts.desc = "See available code actions"
-        keymap.set({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        keymap.set({ "n", "v" }, "<leader>lca", vim.lsp.buf.code_action, opts)
 
         opts.desc = "Smart rename"
-        keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts) -- smart rename
+        keymap.set("n", "<leader>lr", vim.lsp.buf.rename, opts)
 
         opts.desc = "Show buffer diagnostics"
-        keymap.set("n", "<leader>fD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+        keymap.set("n", "<leader>fD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
         opts.desc = "Show line diagnostics"
-        keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts) -- show diagnostics for line
+        keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
 
         opts.desc = "Go to previous diagnostic"
-        keymap.set("n", "{d", function()
-          vim.diagnostic.jump({ count = 1, float = true })
-        end, opts) -- jump to previous diagnostic in buffer
+        keymap.set("n", "{d", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
 
         opts.desc = "Go to next diagnostic"
-        keymap.set("n", "}d", function()
-          vim.diagnostic.jump({ count = -1, float = true })
-        end, opts) -- jump to next diagnostic in buffer
+        keymap.set("n", "}d", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
 
-        opts.desc = "Show documentation for what is under cursor"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
-
-        opts.desc = "Stop LSP"
-        keymap.set("n", "<leader>llt", ":LspStop<CR>", opts) -- mapping to restart lsp if necessary
-
-        opts.desc = "Start LSP"
-        keymap.set("n", "<leader>lls", ":LspStart<CR>", opts) -- mapping to restart lsp if necessary
+        opts.desc = "Show documentation"
+        keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
         opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>llr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+        keymap.set("n", "<leader>llr", ":LspRestart<CR>", opts)
 
         opts.desc = "Lsp Info"
         keymap.set("n", "<leader>li", "<cmd>LspInfo<cr>", opts)

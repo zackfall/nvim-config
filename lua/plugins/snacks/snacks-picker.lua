@@ -1,4 +1,3 @@
--- TODO: Configure Picker
 ---@module 'snacks'
 ---@type snacks.picker.Config
 return {
