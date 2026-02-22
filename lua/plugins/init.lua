@@ -5,6 +5,7 @@ return {
   { "xiyaowong/transparent.nvim" },
   -- { "wakatime/vim-wakatime" },
   { "brenoprata10/nvim-highlight-colors", opts = {} },
+  { "habamax/vim-godot",                  event = "VimEnter" },
   {
     "OXY2DEV/helpview.nvim",
     lazy = false, -- Recommended

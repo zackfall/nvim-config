@@ -102,9 +102,11 @@ n_keymap("<leader>h", ":nohlsearch<CR>", "Stop searching")
 -- Start godot server
 n_keymap("<leader>gs", function()
   vim.fn.serverstart("127.0.0.1:6004")
+  vim.notify("Servidor Godot prendido", vim.log.levels.INFO)
 end, "Start Godot server")
 n_keymap("<leader>gt", function()
   vim.fn.serverstop("127.0.0.1:6004")
+  vim.notify("Servidor Godot detenido", vim.log.levels.INFO)
 end, "Stop Godot server")
 --
 -- }}}

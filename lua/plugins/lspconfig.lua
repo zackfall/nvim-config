@@ -18,6 +18,15 @@ return {
     -------------------------------------------------------------------------
     -- 2. Configuración de Servidores (NUEVA API vim.lsp.config)
     -------------------------------------------------------------------------
+    vim.lsp.config('gdscript', {
+      capabilities = capabilities,
+      cmd = vim.lsp.rpc.connect('127.0.0.1', 6004),
+      root_markers = { 'project.godot', '.git' },
+      filetypes = { 'gd', 'gdscript', 'gdscript3' },
+    })
+
+    -- 2. Habilitamos el servidor
+    vim.lsp.enable('gdscript')
 
     -- LUA
     vim.lsp.config("lua_ls", {
