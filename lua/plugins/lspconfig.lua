@@ -20,7 +20,7 @@ return {
     -------------------------------------------------------------------------
     vim.lsp.config('gdscript', {
       capabilities = capabilities,
-      cmd = vim.lsp.rpc.connect('127.0.0.1', 6004),
+      cmd = vim.lsp.rpc.connect('127.0.0.1', 6008),
       root_markers = { 'project.godot', '.git' },
       filetypes = { 'gd', 'gdscript', 'gdscript3' },
     })
